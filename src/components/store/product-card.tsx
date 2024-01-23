@@ -1,6 +1,7 @@
 import { Product } from "@/types/data";
 import Image from "next/image";
 import AddToCart from "./add-to-cart";
+import { formatPrice } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -24,7 +25,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
       <figcaption className="flex items-center justify-between font-bold mt-2">
         <h2>{product.name}</h2>
-        <p>{product.price}</p>
+        <p>{formatPrice(product.price)}</p>
       </figcaption>
     </article>
   );

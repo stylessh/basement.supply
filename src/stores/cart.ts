@@ -67,6 +67,7 @@ const cartPersist = persist<CartStore>(
       set((state) => ({
         items: state.items.filter((i) => i.id !== item.id),
         itemsCount: state.itemsCount - 1,
+        totalPrice: state.totalPrice - item.price,
       }));
     },
 

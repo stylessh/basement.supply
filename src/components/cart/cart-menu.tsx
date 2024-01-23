@@ -1,21 +1,19 @@
 import { useCartStore } from "@/stores/cart";
 import React from "react";
 import CartItem from "./cart-item";
+import { formatPrice } from "@/lib/utils";
 
 interface CartMenuProps {
   onClose: () => void;
 }
 
 const CartMenu = ({ onClose }: CartMenuProps) => {
-  const { totalPrice, items } = useCartStore();
+  const { totalPrice, items, itemsCount } = useCartStore();
 
-  const formattedTotalPrice = new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "USD",
-  }).format(totalPrice);
+  const formattedTotalPrice = formatPrice(totalPrice);
 
   return (
-    <aside className="max-h-screen grid grid-rows-[1fr,auto,60px]">
+    <aside className="max-h-screen h-screen md:h-auto grid grid-rows-[1fr,auto,60px]">
       <header className="px-4 py-6 w-full flex flex-col gap-y-4">
         <button
           onClick={onClose}
@@ -24,7 +22,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
           → Close
         </button>
 
-        <h2 className="font-black text-7xl uppercase text-center mx-auto md:text-left md:m-0 leading-[.87]">
+        <h2 className="font-black text-8xl md:text-7xl uppercase text-center mx-auto md:text-left md:m-0 leading-[.87]">
           Your <span className="text-outline text-black">Cart</span>
         </h2>
       </header>
@@ -35,18 +33,21 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
         ))}
 
         {items.length === 0 && (
-          <p className="text-left text-xl font-bold uppercase px-4 text-[#999]">
+          <p className="text-center md:text-left text-xl font-bold uppercase px-4 text-[#999]">
             Your cart is empty, for now...
           </p>
         )}
       </ul>
 
       <footer className="border-t grid grid-cols-[2fr,1fr]">
-        <p className="uppercase font-bold text-xl p-4 border-r">
+        <p className="uppercase font-bold md:text-xl p-4 border-r">
           Total: {formattedTotalPrice}
         </p>
 
-        <button className="w-ful h-full grid place-items-center text-outline text-black text-2xl uppercase">
+        <button
+          disabled={itemsCount === 0}
+          className="w-ful h-full grid place-items-center text-outline text-black md:text-2xl uppercase disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+        >
           Checkout
         </button>
       </footer>

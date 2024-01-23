@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCartStore } from "@/stores/cart";
 import CartItemQuantitySelector from "./cart-quantity-selector";
 import CartItemSizeSelector from "./cart-size-selector";
+import { formatPrice } from "@/lib/utils";
 
 interface CartItemProps {
   item: CartItem;
@@ -12,10 +13,7 @@ interface CartItemProps {
 const CartItem = ({ item }: CartItemProps) => {
   const { removeItem, addItem, updateSize } = useCartStore();
 
-  const formattedPrice = new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "USD",
-  }).format(item.price);
+  const formattedPrice = formatPrice(item.price);
 
   return (
     <li className="border p-4 grid grid-cols-[1fr,2fr] gap-x-4">

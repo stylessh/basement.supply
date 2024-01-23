@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import basementGrotesque from "@/lib/font";
 
-import { Providers } from "./providers";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
@@ -20,13 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={basementGrotesque.className}>
-        <Providers>
-          <Header />
-
-          {children}
-
-          <Footer />
-        </Providers>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );
