@@ -10,6 +10,7 @@ const Header = () => {
     <header className="relative mt-6 mb-10 container w-full flex justify-between items-center">
       <Link href="/" className="font-bold">
         <Logo className="w-10 md:w-32" />
+        <span className="sr-only">basement</span>
       </Link>
 
       <div className="hidden md:block">
