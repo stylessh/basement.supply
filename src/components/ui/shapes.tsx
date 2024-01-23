@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { ComponentProps, RefAttributes, forwardRef } from "react";
 
 export const SixFacesShape = (props: ComponentProps<"svg">) => {
   return (
@@ -23,48 +23,53 @@ export const SixFacesShape = (props: ComponentProps<"svg">) => {
   );
 };
 
-export const PlanetShape = (props: ComponentProps<"svg">) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 128 127"
-      {...props}
-    >
-      <path
-        stroke="#fff"
-        strokeMiterlimit="10"
-        strokeWidth="1.518"
-        d="M63.994 125.661c34.606 0 62.659-27.906 62.659-62.33C126.653 28.906 98.6 1 63.994 1 29.388 1 1.334 28.906 1.334 63.33c0 34.425 28.054 62.331 62.66 62.331z"
-      ></path>
-      <path
-        stroke="#fff"
-        strokeMiterlimit="10"
-        strokeWidth="1.518"
-        d="M63.994 125.661c24.525 0 44.406-27.906 44.406-62.33C108.4 28.906 88.519 1 63.994 1S19.588 28.906 19.588 63.33c0 34.425 19.881 62.331 44.406 62.331z"
-      ></path>
-      <path
-        stroke="#fff"
-        strokeMiterlimit="10"
-        strokeWidth="1.518"
-        d="M63.994 125.661c14.46 0 26.182-27.906 26.182-62.33C90.176 28.906 78.454 1 63.994 1c-14.46 0-26.182 27.906-26.182 62.33 0 34.425 11.722 62.331 26.182 62.331z"
-      ></path>
-      <path
-        stroke="#fff"
-        strokeMiterlimit="10"
-        strokeWidth="1.518"
-        d="M63.994 125.661c4.38 0 7.929-27.906 7.929-62.33C71.923 28.906 68.373 1 63.994 1c-4.379 0-7.928 27.906-7.928 62.33 0 34.425 3.55 62.331 7.928 62.331z"
-      ></path>
-      <path
-        stroke="#fff"
-        strokeLinecap="round"
-        strokeMiterlimit="10"
-        strokeWidth="1.518"
-        d="M28.914 11.78h70.303M9.52 32.406h108.919M9.576 94.227h108.806M28.743 114.852h70.474"
-      ></path>
-    </svg>
-  );
-};
+export const PlanetShape = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
+  (props: ComponentProps<"svg">, ref) => {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 128 127"
+        ref={ref}
+        {...props}
+      >
+        <path
+          stroke="#fff"
+          strokeMiterlimit="10"
+          strokeWidth="1.518"
+          d="M63.994 125.661c34.606 0 62.659-27.906 62.659-62.33C126.653 28.906 98.6 1 63.994 1 29.388 1 1.334 28.906 1.334 63.33c0 34.425 28.054 62.331 62.66 62.331z"
+        ></path>
+        <path
+          stroke="#fff"
+          strokeMiterlimit="10"
+          strokeWidth="1.518"
+          d="M63.994 125.661c24.525 0 44.406-27.906 44.406-62.33C108.4 28.906 88.519 1 63.994 1S19.588 28.906 19.588 63.33c0 34.425 19.881 62.331 44.406 62.331z"
+        ></path>
+        <path
+          stroke="#fff"
+          strokeMiterlimit="10"
+          strokeWidth="1.518"
+          d="M63.994 125.661c14.46 0 26.182-27.906 26.182-62.33C90.176 28.906 78.454 1 63.994 1c-14.46 0-26.182 27.906-26.182 62.33 0 34.425 11.722 62.331 26.182 62.331z"
+        ></path>
+        <path
+          stroke="#fff"
+          strokeMiterlimit="10"
+          strokeWidth="1.518"
+          d="M63.994 125.661c4.38 0 7.929-27.906 7.929-62.33C71.923 28.906 68.373 1 63.994 1c-4.379 0-7.928 27.906-7.928 62.33 0 34.425 3.55 62.331 7.928 62.331z"
+        ></path>
+        <path
+          stroke="#fff"
+          strokeLinecap="round"
+          strokeMiterlimit="10"
+          strokeWidth="1.518"
+          d="M28.914 11.78h70.303M9.52 32.406h108.919M9.576 94.227h108.806M28.743 114.852h70.474"
+        ></path>
+      </svg>
+    );
+  }
+);
+
+PlanetShape.displayName = "PlanetShape";
 
 export const LevelsShape = (props: ComponentProps<"svg">) => {
   return (

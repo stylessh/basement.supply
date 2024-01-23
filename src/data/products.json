@@ -2,19 +2,82 @@
   {
     "id": 1,
     "name": "Black t-shirt",
-    "price": "$7.95",
+    "description": "Unisex Basic Softstyle T-Shirt",
+
+    "sizes": [
+      {
+        "name": "S",
+        "stock": 10
+      },
+      {
+        "name": "M",
+        "stock": 10
+      },
+      {
+        "name": "L",
+        "stock": 10
+      },
+      {
+        "name": "XL",
+        "stock": 10
+      }
+    ],
+
+    "price": 7.95,
     "image": "/products/shirt.png"
   },
   {
     "id": 2,
     "name": "Black hoodie",
-    "price": "$13.00",
+    "description": "Unisex Heavy Blend Hooded Sweatshirt",
+
+    "sizes": [
+      {
+        "name": "S",
+        "stock": 0
+      },
+      {
+        "name": "M",
+        "stock": 0
+      },
+      {
+        "name": "L",
+        "stock": 10
+      },
+      {
+        "name": "XL",
+        "stock": 10
+      }
+    ],
+
+    "price": 13.0,
     "image": "/products/hoodie.png"
   },
   {
-    "id": 1,
+    "id": 3,
     "name": "Black cap",
-    "price": "$23.00",
+    "description": "Basic basement cap",
+
+    "sizes": [
+      {
+        "name": "S",
+        "stock": 10
+      },
+      {
+        "name": "M",
+        "stock": 0
+      },
+      {
+        "name": "L",
+        "stock": 2
+      },
+      {
+        "name": "XL",
+        "stock": 10
+      }
+    ],
+
+    "price": 23.0,
     "image": "/products/cap.png"
   }
 ]
