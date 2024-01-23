@@ -6,6 +6,7 @@ import basementGrotesque from "@/lib/font";
 
 import { Providers } from "./providers";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = createMetadata({
   title: "The basement store",
@@ -21,8 +22,10 @@ export default function RootLayout({
       <body className={basementGrotesque.className}>
         <Providers>
           <Header />
-          
+
           {children}
+
+          <Footer />
         </Providers>
       </body>
     </html>
