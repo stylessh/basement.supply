@@ -1,15 +1,16 @@
-"use client";
-
 import Button from "@/components/ui/button";
-import JSConfetti from "js-confetti";
-import { useEffect } from "react";
+import { createMetadata } from "@/lib/metadata";
+import Confetti from "./confetti";
+
+export const metadata = createMetadata({
+  title: "You have pretty good taste.",
+  description:
+    "Thank you for your purchase. You will receive an email confirmation shortly.",
+
+  path: "/success",
+});
 
 export default function Checkout() {
-  useEffect(() => {
-    const confetti = new JSConfetti();
-    confetti.addConfetti();
-  }, []);
-
   return (
     <main className="h-screen grid place-items-center container">
       <article className="flex flex-col items-center justify-center text-center">
@@ -27,6 +28,8 @@ export default function Checkout() {
           <a href="/">Back to the store</a>
         </Button>
       </article>
+
+      <Confetti />
     </main>
   );
 }

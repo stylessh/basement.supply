@@ -4,10 +4,11 @@ interface InputMetadata {
   title: string;
   description?: string;
   image?: string;
+  path?: string;
 }
 
 export const createMetadata = (input: InputMetadata): Metadata => {
-  const { title, description, image } = input;
+  const { title, description, image, path } = input;
 
   if (!process.env.NEXT_PUBLIC_HOST_URL) {
     throw new Error("NEXT_PUBLIC_HOST_URL is not defined");
@@ -38,7 +39,7 @@ export const createMetadata = (input: InputMetadata): Metadata => {
     },
 
     alternates: {
-      canonical: process.env.NEXT_PUBLIC_HOST_URL,
+      canonical: process.env.NEXT_PUBLIC_HOST_URL + (path || "/"),
     },
 
     twitter: {
