@@ -2,6 +2,7 @@ import { useCartStore } from "@/stores/cart";
 import React from "react";
 import CartItem from "./cart-item";
 import { formatPrice } from "@/lib/utils";
+import Link from "next/link";
 
 interface CartMenuProps {
   onClose: () => void;
@@ -44,12 +45,13 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
           Total: {formattedTotalPrice}
         </p>
 
-        <button
-          disabled={itemsCount === 0}
+        <Link
+          href="/checkout"
+          onClick={onClose}
           className="w-ful h-full grid place-items-center text-outline text-black md:text-2xl uppercase disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
         >
           Checkout
-        </button>
+        </Link>
       </footer>
     </aside>
   );

@@ -4,6 +4,9 @@ import React from "react";
 import { SixFacesShape } from "./ui/shapes";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ParallaxShapes = () => {
   useGSAP(() => {
@@ -20,11 +23,11 @@ const ParallaxShapes = () => {
       ease: "power2.inOut",
 
       y: (i) => {
-        return i % 2 === 0 ? "-=50" : "+=50";
+        return i % 2 === 0 ? "-=100" : "+=100";
       },
 
       rotate: (i) => {
-        return i % 2 === 0 ? "-=45" : "+=45";
+        return i % 2 === 0 ? "-=100" : "+=100";
       },
     });
   });

@@ -13,6 +13,7 @@ interface AddToCartProps {
 
 const AddToCart = ({ product }: AddToCartProps) => {
   const planetRef = useRef<SVGSVGElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   const [hasAdded, setHasAdded] = useState(false);
   const { addItem } = useCartStore();
@@ -48,7 +49,10 @@ const AddToCart = ({ product }: AddToCartProps) => {
   };
 
   return (
-    <div className="absolute opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 top-0 left-0 w-full h-full grid place-items-center">
+    <div
+      ref={overlayRef}
+      className="absolute opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 top-0 left-0 w-full h-full grid place-items-center"
+    >
       <PlanetShape className="w-24" ref={planetRef} />
 
       <button
