@@ -16,12 +16,12 @@ const CartItem = ({ item }: CartItemProps) => {
   const formattedPrice = formatPrice(item.price);
 
   return (
-    <li className="border p-4 grid grid-cols-[1fr,2fr] gap-x-4">
+    <li className="border p-4 grid grid-cols-1 sm:grid-cols-[150px,1fr] md:grid-cols-[1fr,2fr] gap-4">
       <figure className="relative p-4 grid place-items-center bg-gradient-to-t from-[#FAFAFA]/10 to-black h-full">
         <Image src={item.image} alt={item.name} width={150} height={150} />
       </figure>
 
-      <article className="flex flex-col justify-between">
+      <article className="flex flex-col justify-between gap-y-6">
         <div>
           <h3 className="uppercase font-bold text-2xl line-clamp-1">
             {item.name}
@@ -31,7 +31,7 @@ const CartItem = ({ item }: CartItemProps) => {
           </p>
         </div>
 
-        <div className="flex items-end justify-between">
+        <div className="flex items-end justify-between flex-wrap gap-y-6">
           <ul className="flex flex-col gap-y-2">
             <li className="flex items-center gap-x-4">
               <span className="font-bold uppercase">Quantity:</span>
