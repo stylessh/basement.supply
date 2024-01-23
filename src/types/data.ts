@@ -16,4 +16,5 @@ export interface Sizes {
 
 export interface CartItem extends Product {
   quantity: number;
+  selectedSize?: Sizes;
 }

@@ -9,13 +9,16 @@ import { useCartStore } from "@/stores/cart";
 
 const CartButton = () => {
   const count = useCartStore((state) => state.itemsCount);
-
   const [open, setOpen] = useState(false);
+
+  const isClient = typeof window !== "undefined";
 
   return (
     <Dialog.Root open={open} onOpenChange={(open) => setOpen(open)}>
       <Dialog.Trigger asChild>
-        <Button className="font-bold">Cart ({count})</Button>
+        <Button className="font-bold" suppressHydrationWarning>
+          Cart ({isClient ? count : "?"})
+        </Button>
       </Dialog.Trigger>
 
       <Dialog.Portal>

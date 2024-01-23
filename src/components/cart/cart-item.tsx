@@ -1,12 +1,17 @@
 import React from "react";
 import { CartItem } from "@/types/data";
 import Image from "next/image";
+import { useCartStore } from "@/stores/cart";
+import CartItemQuantitySelector from "./cart-quantity-selector";
+import CartItemSizeSelector from "./cart-size-selector";
 
 interface CartItemProps {
   item: CartItem;
 }
 
 const CartItem = ({ item }: CartItemProps) => {
+  const { removeItem, addItem, updateSize } = useCartStore();
+
   const formattedPrice = new Intl.NumberFormat("es-AR", {
     style: "currency",
     currency: "USD",
@@ -29,10 +34,29 @@ const CartItem = ({ item }: CartItemProps) => {
         </div>
 
         <div className="flex items-end justify-between">
-          <div>
-            <p>quantity: {item.quantity}</p>
-            <p>sizes: {item.sizes.map((s) => s.name).join(", ")}</p>
-          </div>
+          <ul className="flex flex-col gap-y-2">
+            <li className="flex items-center gap-x-4">
+              <span className="font-bold uppercase">Quantity:</span>
+
+              <CartItemQuantitySelector
+                quantity={item.quantity}
+                onDecrement={() => removeItem(item)}
+                onIncrement={() => addItem(item)}
+              />
+            </li>
+
+            <li className="flex items-center gap-x-4">
+              <span className="font-bold uppercase">Sizes:</span>
+
+              <CartItemSizeSelector
+                sizes={item.sizes}
+                selectedSize={item.selectedSize}
+                onSizeChange={(size) => {
+                  updateSize(item, size);
+                }}
+              />
+            </li>
+          </ul>
 
           <p className="text-2xl font-bold">{formattedPrice}</p>
         </div>

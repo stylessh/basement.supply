@@ -15,7 +15,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
   }).format(totalPrice);
 
   return (
-    <aside className="max-h-screen grid grid-rows-[1fr,auto,1fr]">
+    <aside className="max-h-screen grid grid-rows-[1fr,auto,60px]">
       <header className="px-4 py-6 w-full flex flex-col gap-y-4">
         <button
           onClick={onClose}
@@ -29,10 +29,16 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
         </h2>
       </header>
 
-      <ul className="px-4 py-6 flex flex-col gap-y-6 md:overflow-y-auto">
+      <ul className="px-4 py-6 flex flex-col gap-y-6 overflow-y-auto min-h-[300px]">
         {items.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
+
+        {items.length === 0 && (
+          <p className="text-left text-xl font-bold uppercase px-4 text-[#999]">
+            Your cart is empty, for now...
+          </p>
+        )}
       </ul>
 
       <footer className="border-t grid grid-cols-[2fr,1fr]">

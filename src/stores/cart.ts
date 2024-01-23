@@ -1,4 +1,4 @@
-import { CartItem, Product } from "@/types/data";
+import { CartItem, Product, Sizes } from "@/types/data";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -6,6 +6,8 @@ export interface CartStore {
   items: CartItem[];
   addItem: (item: Product) => void;
   removeItem: (item: Product) => void;
+
+  updateSize: (item: Product, size: Sizes) => void;
 
   itemsCount: number;
   totalPrice: number;
@@ -46,8 +48,10 @@ const cartPersist = persist<CartStore>(
       // check the quantity of the item to decrease it
       const itemExists = get().items.find((i) => i.id === item.id);
 
+      if (!itemExists) return;
+
       // if exists, we update the quantity only
-      if (itemExists) {
+      if (itemExists.quantity > 1) {
         set((state) => ({
           items: state.items.map((i) =>
             i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i
@@ -59,13 +63,27 @@ const cartPersist = persist<CartStore>(
         return;
       }
 
-      // if not, we remove it from the cart
+      // if quantity is 0, we remove the item from the cart
       set((state) => ({
-        items: [...state.items, { ...item, quantity: 1 }],
-
+        items: state.items.filter((i) => i.id !== item.id),
         itemsCount: state.itemsCount - 1,
-        totalPrice: state.totalPrice - item.price,
       }));
+    },
+
+    updateSize: (item, size) => {
+      // check if item already exists in cart to add quantity
+      const itemExists = get().items.find((i) => i.id === item.id);
+
+      if (!itemExists) return;
+
+      // if exists, we update the selectedSize only
+      set((state) => ({
+        items: state.items.map((i) =>
+          i.id === item.id ? { ...i, selectedSize: size } : i
+        ),
+      }));
+
+      return;
     },
 
     itemsCount: 0,
@@ -73,7 +91,13 @@ const cartPersist = persist<CartStore>(
   }),
   {
     name: "cart-storage",
-    storage: createJSONStorage(() => localStorage),
+    storage: createJSONStorage(() => ({
+      // Returning a promise from getItem is necessary to avoid issues with hydration
+      getItem: async (name: string) => localStorage.getItem(name),
+      setItem: (name: string, value: string) =>
+        localStorage.setItem(name, value),
+      removeItem: (name: string) => localStorage.removeItem(name),
+    })),
   }
 );
 
