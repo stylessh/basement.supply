@@ -7,7 +7,7 @@ const Input = ({ className, ...props }: InputProps) => {
   return (
     <input
       className={cn(
-        "border-b border-[#999] p-4 bg-transparent w-full outline-white hover:border-white transition-colors",
+        "border-b border-muted p-4 bg-transparent w-full ring-0 outline-foreground hover:border-foreground transition-colors",
         className
       )}
       {...props}

@@ -16,7 +16,7 @@ const CartItem = ({ item }: CartItemProps) => {
   const formattedPrice = formatPrice(item.price);
 
   return (
-    <li className="border p-4 grid grid-cols-1 sm:grid-cols-[150px,1fr] md:grid-cols-[1fr,2fr] gap-4">
+    <li className="border border-foreground p-4 grid grid-cols-1 sm:grid-cols-[150px,1fr] md:grid-cols-[1fr,2fr] gap-4">
       <figure className="relative p-4 grid place-items-center bg-gradient-to-t from-[#FAFAFA]/10 to-black h-full">
         <Image src={item.image} alt={item.name} width={150} height={150} />
       </figure>
@@ -26,7 +26,7 @@ const CartItem = ({ item }: CartItemProps) => {
           <h3 className="uppercase font-bold text-2xl line-clamp-1">
             {item.name}
           </h3>
-          <p className="font-bold text-[#999] line-clamp-1">
+          <p className="font-bold text-muted line-clamp-1">
             {item.description}
           </p>
         </div>

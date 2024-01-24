@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import tailwindAnimate from 'tailwindcss-animate'
+import tailwindAnimate from "tailwindcss-animate";
 
 const config: Config = {
   content: [
@@ -19,6 +19,13 @@ const config: Config = {
           lg: "100%",
           xl: "100%",
         },
+      },
+
+      colors: {
+        foreground: "rgb(var(--foreground-rgb))",
+        background: "rgb(var(--background-start-rgb))",
+
+        muted: "rgb(var(--muted-rgb))",
       },
 
       animation: {

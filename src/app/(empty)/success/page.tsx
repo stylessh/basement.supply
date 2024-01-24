@@ -19,7 +19,7 @@ export default function Checkout() {
           taste.
         </h1>
 
-        <p className="mt-10 text-[#999] text-sm md:text-base">
+        <p className="mt-10 text-muted text-sm md:text-base">
           Thank you for your purchase. You will receive an email confirmation
           shortly.
         </p>

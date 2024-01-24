@@ -24,7 +24,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
         </button>
 
         <h2 className="font-black text-8xl md:text-[6.5vw] uppercase text-center mx-auto md:text-left md:m-0 leading-[.87]">
-          Your <span className="text-outline text-black">Cart</span>
+          Your <span className="text-outline">Cart</span>
         </h2>
       </header>
 
@@ -34,7 +34,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
         ))}
 
         {items.length === 0 && (
-          <p className="text-center text-xl font-bold uppercase px-4 text-[#999]">
+          <p className="text-center text-xl font-bold uppercase px-4 text-muted">
             Your cart is empty, for now...
           </p>
         )}
@@ -48,7 +48,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
         <Link
           href="/checkout"
           onClick={onClose}
-          className="w-ful h-full py-4 grid place-items-center text-outline text-black text-6xl md:text-2xl uppercase disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+          className="w-ful h-full py-4 grid place-items-center text-outline text-6xl md:text-2xl uppercase disabled:opacity-50 disabled:cursor-not-allowed hover:bg-foreground transition-colors"
         >
           Checkout
         </Link>

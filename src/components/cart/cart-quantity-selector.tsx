@@ -10,7 +10,7 @@ const CartItemQuantitySelector = ({
   onIncrement,
 }: CartItemQuantitySelectorProps) => {
   return (
-    <div className="flex items-center justify-between border rounded-full w-20 px-3">
+    <div className="flex items-center justify-between border border-foreground rounded-full w-20 px-3">
       <button className="font-bold" onClick={onDecrement}>
         -
       </button>

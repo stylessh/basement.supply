@@ -5,7 +5,7 @@ const Visualizer = () => {
     <article className="relative container">
       <h1 className="title font-black text-[14vw] uppercase text-center mx-auto leading-[.87]">
         Basement
-        <span className="text-outline block text-black">Supply</span>
+        <span className="text-outline block">Supply</span>
       </h1>
 
       <Shape className="absolute bottom-4 md:bottom-6 left-[5%] w-[8vw]">

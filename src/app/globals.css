@@ -6,6 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --muted-rgb: 153, 153, 153;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,18 +15,15 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+
+    --muted-rgb: 153, 153, 153;
   }
 }
 
 @layer base {
   body {
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgb(var(--background-end-rgb))
-      )
-      rgb(var(--background-start-rgb));
+    background: rgb(var(--background-start-rgb));
   }
 }
 
@@ -34,7 +33,11 @@
   }
 
   .text-outline {
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
-      1px 1px 0 #fff;
+    text-shadow: -1px -1px 0 rgb(var(--foreground-rgb)),
+      1px -1px 0 rgb(var(--foreground-rgb)),
+      -1px 1px 0 rgb(var(--foreground-rgb)),
+      1px 1px 0 rgb(var(--foreground-rgb));
+
+    color: rgb(var(--background-start-rgb));
   }
 }
