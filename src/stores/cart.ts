@@ -1,13 +1,14 @@
-import { CartItem, Product, Sizes } from "@/types/data";
+import { ProductItem } from "@/actions/products";
+import { CartItem, Sizes } from "@/types/data";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 export interface CartStore {
   items: CartItem[];
-  addItem: (item: Product) => void;
-  removeItem: (item: Product) => void;
+  addItem: (item: ProductItem) => void;
+  removeItem: (item: ProductItem) => void;
 
-  updateSize: (item: Product, size: Sizes) => void;
+  updateSize: (item: ProductItem, size: Sizes) => void;
 
   itemsCount: number;
   totalPrice: number;
@@ -21,13 +22,13 @@ const cartPersist = persist<CartStore>(
     items: [],
     addItem: (item) => {
       // check if item already exists in cart to add quantity
-      const itemExists = get().items.find((i) => i.id === item.id);
+      const itemExists = get().items.find((i) => i._id === item._id);
 
       // if exists, we update the quantity only
       if (itemExists) {
         set((state) => ({
           items: state.items.map((i) =>
-            i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+            i._id === item._id ? { ...i, quantity: i.quantity + 1 } : i
           ),
 
           totalPrice: state.totalPrice + item.price,
@@ -46,7 +47,7 @@ const cartPersist = persist<CartStore>(
 
     removeItem: (item) => {
       // check the quantity of the item to decrease it
-      const itemExists = get().items.find((i) => i.id === item.id);
+      const itemExists = get().items.find((i) => i._id === item._id);
 
       if (!itemExists) return;
 
@@ -54,7 +55,7 @@ const cartPersist = persist<CartStore>(
       if (itemExists.quantity > 1) {
         set((state) => ({
           items: state.items.map((i) =>
-            i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i
+            i._id === item._id ? { ...i, quantity: i.quantity - 1 } : i
           ),
 
           totalPrice: state.totalPrice - item.price,
@@ -65,7 +66,7 @@ const cartPersist = persist<CartStore>(
 
       // if quantity is 0, we remove the item from the cart
       set((state) => ({
-        items: state.items.filter((i) => i.id !== item.id),
+        items: state.items.filter((i) => i._id !== item._id),
         itemsCount: state.itemsCount - 1,
         totalPrice: state.totalPrice - item.price,
       }));
@@ -73,14 +74,14 @@ const cartPersist = persist<CartStore>(
 
     updateSize: (item, size) => {
       // check if item already exists in cart to add quantity
-      const itemExists = get().items.find((i) => i.id === item.id);
+      const itemExists = get().items.find((i) => i._id === item._id);
 
       if (!itemExists) return;
 
       // if exists, we update the selectedSize only
       set((state) => ({
         items: state.items.map((i) =>
-          i.id === item.id ? { ...i, selectedSize: size } : i
+          i._id === item._id ? { ...i, selectedSize: size } : i
         ),
       }));
 

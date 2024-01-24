@@ -12,7 +12,7 @@ const CheckoutSummary = () => {
     <section className="md:max-h-screen container grid grid-rows-[1fr,20px] gap-y-10 pb-20">
       <ul className="overflow-y-auto flex flex-col gap-y-4 min-h-[500px] md:max-h-[50vh]">
         {items.map((item) => (
-          <CartItem key={item.id} item={item} />
+          <CartItem key={item._id} item={item} />
         ))}
       </ul>
 

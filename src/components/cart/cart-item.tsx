@@ -18,7 +18,12 @@ const CartItem = ({ item }: CartItemProps) => {
   return (
     <li className="border border-foreground p-4 grid grid-cols-1 sm:grid-cols-[150px,1fr] md:grid-cols-[1fr,2fr] gap-4">
       <figure className="relative p-4 grid place-items-center bg-gradient-to-t from-[#FAFAFA]/10 to-black h-full">
-        <Image src={item.image} alt={item.name} width={150} height={150} />
+        <Image
+          src={item.image.rawUrl}
+          alt={item.name}
+          width={150}
+          height={150}
+        />
       </figure>
 
       <article className="flex flex-col justify-between gap-y-6">
@@ -47,7 +52,6 @@ const CartItem = ({ item }: CartItemProps) => {
               <span className="font-bold uppercase">Sizes:</span>
 
               <CartItemSizeSelector
-                sizes={item.sizes}
                 selectedSize={item.selectedSize}
                 onSizeChange={(size) => {
                   updateSize(item, size);

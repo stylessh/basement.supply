@@ -1,14 +1,14 @@
 "use client";
 
-import { Product } from "@/types/data";
 import React, { useEffect, useRef, useState } from "react";
 import { PlanetShape } from "../ui/shapes";
 import { useCartStore } from "@/stores/cart";
 import { cn } from "@/lib/utils";
 import { gsap } from "gsap";
+import { ProductItem } from "@/actions/products";
 
 interface AddToCartProps {
-  product: Product;
+  product: ProductItem;
 }
 
 const AddToCart = ({ product }: AddToCartProps) => {

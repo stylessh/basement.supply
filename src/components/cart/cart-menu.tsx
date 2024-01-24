@@ -30,7 +30,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
 
       <ul className="px-4 py-6 flex flex-col gap-y-6 overflow-y-auto min-h-[300px]">
         {items.map((item) => (
-          <CartItem key={item.id} item={item} />
+          <CartItem key={item._id} item={item} />
         ))}
 
         {items.length === 0 && (

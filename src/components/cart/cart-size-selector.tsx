@@ -2,17 +2,22 @@ import { cn } from "@/lib/utils";
 import { Sizes } from "@/types/data";
 
 interface CartItemSizeSelectorProps {
-  sizes: Sizes[];
   selectedSize?: Sizes;
 
   onSizeChange: (size: Sizes) => void;
 }
 
 const CartItemSizeSelector = ({
-  sizes,
   selectedSize,
   onSizeChange,
 }: CartItemSizeSelectorProps) => {
+  // putting sizes statically for now
+  const sizes = [
+    { name: "S", stock: 0 },
+    { name: "M", stock: 5 },
+    { name: "L", stock: 2 },
+  ];
+
   return (
     <div className="flex items-center gap-x-2">
       {sizes.map((size) => (

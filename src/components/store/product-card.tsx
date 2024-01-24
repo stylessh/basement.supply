@@ -1,18 +1,18 @@
-import { Product } from "@/types/data";
 import Image from "next/image";
 import AddToCart from "./add-to-cart";
 import { formatPrice } from "@/lib/utils";
+import { ProductItem } from "@/actions/products";
 
 interface ProductCardProps {
-  product: Product;
+  product: ProductItem;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <article key={product.id} className="group">
+    <article key={product._id} className="group">
       <figure className="relative p-4 grid place-items-center bg-gradient-to-t from-[#FAFAFA]/10 to-black h-full border-white border-b-2 overflow-hidden">
         <Image
-          src={product.image}
+          src={product.image.rawUrl}
           alt={product.name}
           width={480}
           height={640}
