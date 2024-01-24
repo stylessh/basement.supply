@@ -9,12 +9,12 @@ interface CartMenuProps {
 }
 
 const CartMenu = ({ onClose }: CartMenuProps) => {
-  const { totalPrice, items, itemsCount } = useCartStore();
+  const { totalPrice, items } = useCartStore();
 
   const formattedTotalPrice = formatPrice(totalPrice);
 
   return (
-    <aside className="max-h-screen h-[100dvh] grid grid-rows-[auto,auto,auto]">
+    <aside className="max-h-screen h-[100dvh] grid grid-[auto,auto,auto] md:grid-rows-[auto,auto,60px]">
       <header className="px-4 py-6 w-full flex flex-col gap-y-4">
         <button
           onClick={onClose}
