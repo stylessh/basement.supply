@@ -22,9 +22,9 @@ const CartButton = () => {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="bg-black/50 h-screen w-full fixed inset-0" />
+        <Dialog.Overlay className="bg-black/50 h-screen w-full fixed inset-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
 
-        <Dialog.Content className="max-w-2xl bg-black border fixed top-0 right-0 w-full z-50">
+        <Dialog.Content className="max-w-2xl bg-black border fixed top-0 right-0 w-full z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-right-40 data-[state=closed]:slide-out-to-right-40 data-[state=closed]:fade-out-0 ease-in-out duration-300">
           <CartMenu onClose={() => setOpen(false)} />
         </Dialog.Content>
       </Dialog.Portal>

@@ -14,7 +14,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
   const formattedTotalPrice = formatPrice(totalPrice);
 
   return (
-    <aside className="max-h-screen h-[100dvh] grid grid-rows-[auto,auto,60px]">
+    <aside className="max-h-screen h-[100dvh] grid grid-rows-[auto,auto,auto]">
       <header className="px-4 py-6 w-full flex flex-col gap-y-4">
         <button
           onClick={onClose}
@@ -40,15 +40,15 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
         )}
       </ul>
 
-      <footer className="border-t grid grid-cols-[2fr,1fr]">
-        <p className="uppercase font-bold md:text-xl p-4 border-r">
-          Total: {formattedTotalPrice}
+      <footer className="md:border-t grid md:grid-cols-[2fr,1fr]">
+        <p className="uppercase font-bold text-xl p-4 md:border-r flex items-center justify-between md:justify-start gap-x-4 border-b md:border-b-0">
+          Total: <span>{formattedTotalPrice}</span>
         </p>
 
         <Link
           href="/checkout"
           onClick={onClose}
-          className="w-ful h-full grid place-items-center text-outline text-black md:text-2xl uppercase disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+          className="w-ful h-full py-4 grid place-items-center text-outline text-black text-6xl md:text-2xl uppercase disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
         >
           Checkout
         </Link>
