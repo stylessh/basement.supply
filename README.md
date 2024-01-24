@@ -1,8 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Basement Supply
 
-## Getting Started
+The project was created with Next (App Router) and Typescript. It uses Tailwind CSS for styling and is deployed on Vercel.
 
-First, run the development server:
+
+### Environment Variables
+
+Copy the `.env.example` file and rename it to `.env.local`. Then, replace the values with your own.
+
+`NEXT_PUBLIC_HOST_URL` should be the url of the running project. It is used for metadata construction.
+
+### Running Project
+
+To run the project, you need to have Node.js installed. You can download it from [here](https://nodejs.org/en/download/).
+
+After installing Node.js, you can install the dependencies by running the following command in the project directory:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+After installing the dependencies, you can run the project by running the following command in the project directory:
 
 ```bash
 npm run dev
@@ -16,21 +39,10 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Cart
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The cart is stored in the local storage of the browser and is synced with the internal state of the app using **zustand**. The cart is cleared when the user checks out.
 
-## Learn More
+### GSAP
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Most of the animations are done using GSAP. Some others with just CSS.
