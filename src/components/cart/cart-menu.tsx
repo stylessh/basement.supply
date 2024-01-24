@@ -14,7 +14,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
   const formattedTotalPrice = formatPrice(totalPrice);
 
   return (
-    <aside className="max-h-screen h-screen md:h-auto grid grid-rows-[1fr,auto,60px]">
+    <aside className="max-h-screen h-[100dvh] grid grid-rows-[auto,auto,60px]">
       <header className="px-4 py-6 w-full flex flex-col gap-y-4">
         <button
           onClick={onClose}
@@ -23,7 +23,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
           → Close
         </button>
 
-        <h2 className="font-black text-8xl md:text-7xl uppercase text-center mx-auto md:text-left md:m-0 leading-[.87]">
+        <h2 className="font-black text-8xl md:text-[6.5vw] uppercase text-center mx-auto md:text-left md:m-0 leading-[.87]">
           Your <span className="text-outline text-black">Cart</span>
         </h2>
       </header>
@@ -34,7 +34,7 @@ const CartMenu = ({ onClose }: CartMenuProps) => {
         ))}
 
         {items.length === 0 && (
-          <p className="text-center md:text-left text-xl font-bold uppercase px-4 text-[#999]">
+          <p className="text-center text-xl font-bold uppercase px-4 text-[#999]">
             Your cart is empty, for now...
           </p>
         )}
